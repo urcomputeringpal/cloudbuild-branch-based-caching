@@ -26,6 +26,12 @@ On each push to a branch:
 1. Cloud Build will attempt to build an image using the `Dockerfile` in your repository, passing the names of the images from step one to the `--cache-from` argument on `docker build`. Layers from these images are reused if possible rather than executing the `RUN`, `ADD`, or `COPY` command in your Dockerfile.
 1. Cloud Build pushes the image built in step two to GCR, tagged with `$BRANCH` so that subsequent pushes can re-use it in step one.
 
+Here are some example PRs that show how it works in practice!
+
+* #2 updates [`run.sh`](./run.sh), a file used in at the very end of our [`Dockerfile`](./Dockerfile). Much of the build is cached as a result.
+* #3 updates [`README.md`](./README.md), a file used early on in our [`Dockerfile`](./Dockerfile). All steps after the one involving the readme are invalidated, resulting in most of the build steps being executed again.
+* https://github.com/urcomputeringpal/cloudbuild-branch-based-caching/pull/3#issuecomment-416950408 demonstrates how *another* change made on the branch for #3 uses a branch-specific image for its build cache to avoid re-evaluating the steps that differ between it and `master` each time.
+
 ## TODO
 
 - GC state images?
