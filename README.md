@@ -1,6 +1,6 @@
 # Cloud Build branch-based caching
 
-This repository contains a [Google Cloud Build](https://github.com/apps/google-cloud-build) configuration file ([`cloudbuild.yaml`](./cloudbuild.yaml)) that you can drop into your repository to speed up builds by leveraging Google Container Registry as a remote build cache.
+This repository contains a [Google Cloud Build](https://github.com/apps/google-cloud-build) configuration file ([`cloudbuild.yaml`](./cloudbuild.yaml)) that you can drop into your repository to speed up Docker builds by leveraging Google Container Registry as a remote build cache.
 
 ### How it works
 
