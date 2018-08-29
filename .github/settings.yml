@@ -1,6 +1,6 @@
 repository:
   description: A Google Cloud Build configuration file that you can drop into your repository to speed up builds by leveraging Google Container Registry as a remote build cache
-  topics: google-cloud-build cloudbuild cloud-build docker
+  topics: google-cloud-build google-cloud-platform google-containers cloud-build docker
   private: false
   has_projects: false
   has_wiki: false
