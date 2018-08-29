@@ -1,0 +1,35 @@
+# Copy and paste this cloudbuild.yaml into your project to speed up your builds!
+# TODO GC unused images
+steps:
+
+ # Populate the cache
+- name: gcr.io/cloud-builders/docker
+  entrypoint: bash
+  args:
+  - -ce
+  - |
+    for image in \
+      gcr.io/$PROJECT_ID/$REPO_NAME:$BRANCH_NAME \
+      gcr.io/$PROJECT_ID/$REPO_NAME:master \
+    ; do
+      docker pull $$image || true
+    done
+
+# Build an image
+- name: gcr.io/cloud-builders/docker
+  args:
+  - build
+  - --cache-from
+  - gcr.io/$PROJECT_ID/$REPO_NAME:$BRANCH_NAME
+  - --cache-from
+  - gcr.io/$PROJECT_ID/$REPO_NAME:master
+  - -t
+  - gcr.io/$PROJECT_ID/$REPO_NAME:$BRANCH_NAME
+  - -t
+  - gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA
+  - .
+
+# Publish the image
+images:
+- gcr.io/$PROJECT_ID/$REPO_NAME:$BRANCH_NAME
+- gcr.io/$PROJECT_ID/$REPO_NAME:$COMMIT_SHA
