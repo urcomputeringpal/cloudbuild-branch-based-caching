@@ -28,9 +28,9 @@ On each push to a branch:
 
 Here are some example PRs that show how it works in practice!
 
-* #2 updates [`run.sh`](./run.sh), a file used in at the very end of our [`Dockerfile`](./Dockerfile). Much of the build is cached as a result.
-* #3 updates [`README.md`](./README.md), a file used early on in our [`Dockerfile`](./Dockerfile). All steps after the one involving the readme are invalidated, resulting in most of the build steps being executed again.
-* https://github.com/urcomputeringpal/cloudbuild-branch-based-caching/pull/3#issuecomment-416950408 demonstrates how *another* change made on the branch for #3 uses a branch-specific image for its build cache to avoid re-evaluating the steps that differ between it and `master` each time.
+* [#2](https://github.com/urcomputeringpal/cloudbuild-branch-based-caching/pull/2) updates [`run.sh`](./run.sh), a file used in at the very end of our [`Dockerfile`](./Dockerfile). Much of the build is cached as a result.
+* [#3](https://github.com/urcomputeringpal/cloudbuild-branch-based-caching/pull/2) updates [`README.md`](./README.md), a file used early on in our [`Dockerfile`](./Dockerfile). All steps after the one involving the readme are invalidated, resulting in most of the build steps being executed again.
+* [#3 (comment)](https://github.com/urcomputeringpal/cloudbuild-branch-based-caching/pull/3#issuecomment-416950408) demonstrates how a subsequent change made on the branch for [#3](https://github.com/urcomputeringpal/cloudbuild-branch-based-caching/pull/2) uses a branch-specific image for its build cache to avoid re-evaluating the steps that differ between it and `master` each time.
 
 ## TODO
 
