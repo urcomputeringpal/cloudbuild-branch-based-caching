@@ -4,7 +4,7 @@ This repository contains a [Google Cloud Build](https://github.com/apps/google-c
 
 ### How it works
 
-Docker local experience includes a delightful "incremental build" feature, wherein a well-crafted Dockerfile doesn't have to be rebuilt from scratch each time if only certain parts of a repository change. To accomplsih this, Docker uses the layers from images you've previously built as a "build cache" that it refers to in the course performing builds. You may recall seeing something like this the output of `docker build` commands:
+Docker's local experience includes a delightful "incremental build" feature, wherein a well-crafted Dockerfile doesn't have to be rebuilt from scratch each time if only certain parts of a repository change. To accomplsih this, Docker uses the layers from images you've previously built as a "build cache" that it refers to in the course performing builds. You may recall seeing something like this the output of `docker build` commands:
 
 ```
 Step 4/6 : RUN apk update && apk add ca-certificates && rm -rf /var/cache/apk/*
